@@ -1,16 +1,19 @@
-import { Link } from 'react-router';
+import { NavLink } from 'react-router';
 import './header.css';
 
 export function Header() {
   return (
     <div className="header">
       <div className="left-section">
-        <Link to="/" className="header-link">
-          <img className="logo"
-            src="images/logo-white.png" />
-          <img className="mobile-logo"
-            src="images/mobile-logo-white.png" />
-        </Link>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `header-NavLink ${isActive ? 'active' : ''}`
+          }
+        >
+          <img className="logo" src="images/logo-white.png" />
+          <img className="mobile-logo" src="images/mobile-logo-white.png" />
+        </NavLink>
       </div>
 
       <div className="middle-section">
@@ -22,16 +25,25 @@ export function Header() {
       </div>
 
       <div className="right-section">
-        <Link className="orders-link header-link" to="/orders">
-
+        <NavLink
+          to="/orders"
+          className={({ isActive }) =>
+            `orders-NavLink header-NavLink ${isActive ? 'active' : ''}`
+          }
+        >
           <span className="orders-text">Orders</span>
-        </Link>
+        </NavLink>
 
-        <Link className="cart-link header-link" to="/checkout">
+        <NavLink
+          to="/checkout"
+          className={({ isActive }) =>
+            `cart-NavLink header-NavLink ${isActive ? 'active' : ''}`
+          }
+        >
           <img className="cart-icon" src="images/icons/cart-icon.png" />
           <div className="cart-quantity">3</div>
           <div className="cart-text">Cart</div>
-        </Link>
+        </NavLink>
       </div>
     </div>
   );
