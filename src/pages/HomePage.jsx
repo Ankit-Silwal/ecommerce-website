@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useEffect ,useState} from 'react';
 import { Header } from "../components/Header";
 import "./HomePage.css";
-
+import {formatMoney} from '../utils/money'
 
 export function HomePage({cart}) {
   const [products,setProducts]=useState([]);
@@ -39,7 +39,8 @@ export function HomePage({cart}) {
                     className="product-rating-stars"
                     src={`images/ratings/rating-${product.rating.stars*10}.png`}
                   />
-                  <div className="product-rating-count link-primary">{product.rating.count}</div>
+                  <div className="product-rating-count link-primary">
+                    {formatMoney(product.priceCents)}</div>
                 </div>
 
                 <div className="product-price">${(product.priceCents/100).toFixed(2)}</div>
